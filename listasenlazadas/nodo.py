@@ -1,4 +1,6 @@
+from paciente import Paciente
+
 class Nodo:
-    def __init__(self, dato):
-        self.dato = dato  # Debe ser un objeto de tipo Paciente
-        self.siguiente = None
+    def __init__(self, dato:Paciente)->None:
+        self.dato:Paciente = dato  
+        self.siguiente:Nodo = None
