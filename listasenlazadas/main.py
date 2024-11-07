@@ -2,17 +2,17 @@ from colaprioridad import ColaPrioridad
 from paciente import Paciente
 
 class Main:
-    def __init__(self):
+    def __init__(self)->None:
         self.cola = ColaPrioridad()
 
-    def mostrar_menu(self):
+    def mostrar_menu(self)->None:
         print("\n--- Sistema de Gestión de Clínica ---")
         print("1. Agregar paciente")
         print("2. Atender paciente")
         print("3. Mostrar cola de pacientes")
         print("4. Salir")
 
-    def ejecutar(self):
+    def ejecutar(self)->None:
         while True:
             self.mostrar_menu()
             opcion = input("Seleccione una opción: ")
@@ -41,3 +41,4 @@ class Main:
 if __name__ == "__main__":
     sistema = Main()
     sistema.ejecutar()
+
