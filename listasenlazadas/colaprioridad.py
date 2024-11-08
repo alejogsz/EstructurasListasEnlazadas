@@ -41,3 +41,33 @@ class ColaPrioridad:
         while actual is not None:
             print(actual.dato)
             actual = actual.siguiente
+
+
+    def agrupar_por_prioridad(self) -> dict:
+        lotes = {}
+        actual = self.head
+        while actual is not None:
+            prioridad = actual.dato.prioridad
+            if prioridad not in lotes:
+                lotes[prioridad] = []
+            lotes[prioridad].append(actual.dato)
+            actual = actual.siguiente
+        return lotes
+
+    def atender_lote_mayor(self) -> None:
+        lotes = self.agrupar_por_prioridad()
+        if not lotes:
+            print("No hay pacientes para agrupar.")
+            return
+
+        # Calcular el promedio de pacientes por lote
+        total_pacientes = sum(len(lote) for lote in lotes.values())
+        promedio = total_pacientes // len(lotes)
+
+        # Buscar el lote con mayor cantidad de pacientes
+        lote_mayor = max(lotes.values(), key=len)
+
+        print(f"\nAtendiendo pacientes del lote con más pacientes hasta alcanzar el promedio ({promedio} pacientes):")
+        for _ in range(min(promedio, len(lote_mayor))):
+            paciente = lote_mayor.pop(0)
+            print(f"Atendiendo a: {paciente}")
