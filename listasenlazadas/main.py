@@ -5,14 +5,15 @@ class Main:
     def __init__(self)->None:
         self.cola = ColaPrioridad()
 
-    def mostrar_menu(self)->None:
+    def mostrar_menu(self) -> None:
         print("\n--- Sistema de Gestión de Clínica ---")
         print("1. Agregar paciente")
         print("2. Atender paciente")
         print("3. Mostrar cola de pacientes")
-        print("4. Salir")
+        print("4. Atender lote mayor hasta el promedio")
+        print("5. Salir")
 
-    def ejecutar(self)->None:
+    def ejecutar(self) -> None:
         while True:
             self.mostrar_menu()
             opcion = input("Seleccione una opción: ")
@@ -31,6 +32,9 @@ class Main:
                 self.cola.mostrar()
             
             elif opcion == "4":
+                self.cola.atender_lote_mayor()
+            
+            elif opcion == "5":
                 print("Saliendo del sistema...")
                 break
             
